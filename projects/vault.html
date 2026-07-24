@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   V Vault
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Outfit:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <style>
+   *{box-sizing:border-box}:root{--ink:#151515;--muted:#747477;--blue:#aec1f8;--soft:#f3f3f5;--line:#e6e6e8;--good:#528568}body{margin:0;background:#dce5ff;font:13px 'DM Sans',sans-serif;color:var(--ink);min-height:100vh;display:grid;place-items:center;padding:32px}.shell{width:min(1160px,100%);min-height:700px;border:4px solid #151515;border-radius:31px;background:white;padding:11px;display:grid;grid-template-columns:155px 1fr;box-shadow:0 10px #151515}.side{background:var(--blue);border-radius:22px;padding:16px 11px;display:flex;flex-direction:column}.logo{width:42px;height:42px;border-radius:13px;background:#fff;display:grid;place-items:center;font:800 25px Outfit;transform:rotate(-12deg);margin:0 8px 42px}.logo i{font-style:normal;transform:rotate(12deg)}nav{display:grid;gap:7px}.nav{border:0;border-radius:15px;background:transparent;text-align:left;padding:12px;color:#303033;font:600 11px 'DM Sans';cursor:pointer;display:flex;gap:10px}.nav b{font:400 15px Arial;width:15px}.nav.active{background:#111;color:white}.profile{margin-top:auto;border-top:1px solid #96aae2;padding:15px 6px 0;font-size:10px}.profile b{display:block}main{padding:15px 20px 20px 25px}.top{display:flex;justify-content:space-between;align-items:start;margin-bottom:21px}.top h1{font:700 18px Outfit;margin:0}.top p{font-size:9px;color:var(--muted);margin:5px 0}.search{display:flex;gap:7px;align-items:center;background:var(--soft);border-radius:18px;padding:10px 13px;color:#8b8b90}.search input{border:0;background:transparent;outline:0;font:10px 'DM Sans';width:170px}.page{display:none}.page.active{display:block}.overview{display:grid;grid-template-columns:1.45fr 1fr;gap:16px}.balance{background:var(--blue);border-radius:18px;padding:19px;text-align:center}.balance small,.bank small{font-size:9px}.balance strong{display:block;font:800 31px Outfit;margin:3px}.actions{display:flex;justify-content:center;gap:14px}.actions button,.round{border:0;width:29px;height:29px;border-radius:50%;background:#111;color:#fff;cursor:pointer;font-size:15px}.action{font-size:8px;display:grid;gap:4px;justify-items:center}.cards{display:flex;gap:10px;overflow:auto}.bank{min-width:167px;border-radius:15px;background:#f3f3f5;padding:14px;position:relative}.bank.blue{background:var(--blue)}.bank b{font:700 18px Outfit;display:block;margin:25px 0 13px}.bank footer{display:flex;justify-content:space-between;font-size:8px}.content{display:grid;grid-template-columns:1.25fr 1fr;gap:21px;margin-top:21px}.title{font:700 20px Outfit;margin:0 0 10px}.transfer{display:flex;gap:12px;background:var(--soft);padding:11px;border-radius:14px;overflow:auto}.person{border:0;background:transparent;min-width:35px;text-align:center;font-size:8px;cursor:pointer}.person i{display:grid;place-items:center;height:30px;width:30px;border-radius:50%;background:#d2b4bd;font-style:normal;margin:auto auto 4px}.person:nth-child(3) i{background:#b6c9ed}.person:nth-child(4) i{background:#c9dec9}.person.add i{background:#111;color:white}.trans{display:flex;align-items:center;gap:10px;background:#f5f5f6;padding:11px;border-radius:12px;margin:8px 0}.trans i{width:30px;height:30px;display:grid;place-items:center;background:#fff;border-radius:9px;color:#cc7880;font-style:normal}.trans b{font-size:10px;display:block}.trans small{font-size:8px;color:var(--muted)}.trans strong{margin-left:auto;font-size:10px}.pos{color:var(--good)}.stats-head{display:flex;justify-content:space-between;align-items:center}.tabs{background:#f0f0f1;padding:3px;border-radius:15px}.tabs button{border:0;border-radius:12px;background:transparent;font:600 8px 'DM Sans';padding:6px 9px;cursor:pointer}.tabs button.active{background:#111;color:#fff}.chartbox{margin-top:10px;background:#f4f4f5;border-radius:15px;padding:14px}.chartbox h2{font:700 24px Outfit;margin:5px 0}.bars{height:108px;display:flex;gap:6px;align-items:end;border-bottom:1px solid #ddd;padding:0 5px}.day{height:100%;flex:1;display:flex;gap:2px;align-items:end;position:relative}.day i{display:block;width:50%;background:#aac0f4;border-radius:4px 4px 0 0;transition:height .5s}.day i:nth-child(2){background:#111}.day small{position:absolute;bottom:-15px;font-size:7px;color:var(--muted)}.money{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}.money div{background:#eeeef0;border-radius:10px;padding:9px;font-size:8px}.money b{display:block;font:700 14px Outfit;margin-top:3px}.panel{background:#f5f5f6;border-radius:15px;padding:17px}.filters{display:flex;gap:8px;margin:15px 0}.filters input,.filters select{border:1px solid var(--line);border-radius:8px;padding:9px;background:#fff;font:11px 'DM Sans';outline:0}.filters input{flex:1}.rows{background:#f5f5f6;border-radius:14px;padding:5px 14px}.row{display:grid;grid-template-columns:1.5fr 1fr 1fr .7fr;align-items:center;padding:12px 0;border-bottom:1px solid #e3e3e5;font-size:11px}.row:last-child{border:0}.tag{background:#dce7ff;border-radius:10px;padding:4px 7px;width:max-content;font-size:9px}.goal{margin:12px 0}.goal-top{display:flex;justify-content:space-between;font-weight:700}.goal small{font-weight:400;color:var(--muted)}.progress{height:9px;border-radius:7px;background:#e4e4e6;margin:8px 0;overflow:hidden}.progress i{height:100%;display:block;border-radius:7px;background:#809ce6;transition:width .8s}.budget{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.budget article{background:#f4f4f5;padding:15px;border-radius:13px}.budget b{font:700 17px Outfit}.budget p{font-size:10px;color:var(--muted)}.budget input{width:100%;accent-color:#7e9bea}.toggle{border:0;background:#d7d7da;border-radius:13px;padding:4px 7px;font-size:10px;cursor:pointer}.toggle.on{background:#111;color:white}.toast{position:fixed;bottom:25px;left:50%;background:#111;color:#fff;border-radius:18px;padding:10px 16px;font-size:11px;opacity:0;transform:translate(-50%,20px);transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}@media(max-width:760px){body{padding:0}.shell{border:0;border-radius:0;grid-template-columns:1fr}.side{height:62px;display:flex;flex-direction:row;align-items:center}.logo{margin:0 12px 0 0}.profile{display:none}nav{display:flex;overflow:auto}.nav{padding:9px}.nav span{display:none}main{padding:16px}.overview,.content{grid-template-columns:1fr}.budget{grid-template-columns:1fr 1fr}}@media(max-width:440px){.top{display:block}.search{margin-top:12px}.search input{width:100%}.row{grid-template-columns:1.3fr 1fr .7fr}.row span:nth-child(3){display:none}}
+  .back-btn{
+    position:absolute;
+    top: 40px;
+    left:80px;
+
+    width:46px;
+    height:46px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#fff;
+    color:#151515;
+
+    border:3px solid #151515;
+    border-radius:50%;
+
+    text-decoration:none;
+
+    box-shadow:0 5px #151515;
+    transition:.25s ease;
+    z-index:1000;
+}
+
+.back-btn:hover{
+    background:#AEC1F8;
+    transform:translateY(-2px);
+    box-shadow:0 7px #151515;
+}
+
+.back-btn:active{
+    transform:translateY(2px);
+    box-shadow:0 2px #151515;
+}
+  </style>
+ </head>
+ <body>
+  <a href="uiuxproject.html" class="back-btn" aria-label="Back">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="22"
+         height="22"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2.5"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6"/>
+    </svg>
+</a>
+  <div class="shell">
+   <aside class="side">
+    <div class="logo">
+     <i>
+      V
+     </i>
+    </div>
+    <nav>
+     <button class="nav active" data-page="home">
+      <b>
+       ⌂
+      </b>
+      <span>
+       Home
+      </span>
+     </button>
+     <button class="nav" data-page="wallet">
+      <b>
+       ▣
+      </b>
+      <span>
+       Wallet
+      </span>
+     </button>
+     <button class="nav" data-page="transfer">
+      <b>
+       ↔
+      </b>
+      <span>
+       Transfer
+      </span>
+     </button>
+     <button class="nav" data-page="goals">
+      <b>
+       ◎
+      </b>
+      <span>
+       Goals
+      </span>
+     </button>
+     <button class="nav" data-page="budget">
+      <b>
+       ◫
+      </b>
+      <span>
+       Budget
+      </span>
+     </button>
+     <button class="nav" data-page="settings">
+      <b>
+       ⊙
+      </b>
+      <span>
+       Settings
+      </span>
+     </button>
+    </nav>
+    <div class="profile">
+     <b>
+      Kashi
+     </b>
+     Personal vault
+    </div>
+   </aside>
+   <main>
+    <header class="top">
+     <div>
+      <h1 id="hello">
+       Hello, Kashi!
+      </h1>
+      <p>
+       Everything about your money, in one peaceful place.
+      </p>
+     </div>
+     <label class="search">
+      ⌕
+      <input id="search" placeholder="Search transactions"/>
+     </label>
+    </header>
+    <section class="page active" id="home">
+     <div class="overview">
+      <article class="balance">
+       <small>
+        Available balance
+       </small>
+       <strong id="balance">
+        ₹28,540.00
+       </strong>
+       <div class="actions">
+        <span class="action">
+         <button data-action="send">
+          ↗
+         </button>
+         Send
+        </span>
+        <span class="action">
+         <button data-action="request">
+          ↓
+         </button>
+         Request
+        </span>
+        <span class="action">
+         <button data-action="split">
+          ▣
+         </button>
+         Split bill
+        </span>
+        <span class="action">
+         <button data-action="topup">
+          +
+         </button>
+         Top up
+        </span>
+       </div>
+      </article>
+      <div class="cards">
+       <article class="bank">
+        <small>
+         VISA
+        </small>
+        <b>
+         ₹1,842
+        </b>
+        <footer>
+         <span>
+          •••• 1489
+         </span>
+         <span>
+          04/28
+         </span>
+        </footer>
+       </article>
+       <article class="bank blue">
+        <small>
+         VISA
+        </small>
+        <b>
+         ₹4,342.11
+        </b>
+        <footer>
+         <span>
+          •••• 1345
+         </span>
+         <span>
+          01/28
+         </span>
+        </footer>
+       </article>
+      </div>
+     </div>
+     <div class="content">
+      <div>
+       <h2 class="title">
+        Quick transfer
+       </h2>
+       <div class="transfer">
+        <button class="person add" data-person="new">
+         <i>
+          +
+         </i>
+         Add
+        </button>
+        <button class="person" data-person="Jolie">
+         <i>
+          J
+         </i>
+         Jolie
+        </button>
+        <button class="person" data-person="Dilan">
+         <i>
+          D
+         </i>
+         Dilan
+        </button>
+        <button class="person" data-person="Anna">
+         <i>
+          A
+         </i>
+         Anna
+        </button>
+        <button class="person" data-person="John">
+         <i>
+          J
+         </i>
+         John
+        </button>
+       </div>
+       <div>
+        <h2 class="title" style="margin-top:18px">
+         Transactions
+        </h2>
+        <div id="recent">
+        </div>
+       </div>
+      </div>
+      <div>
+       <div class="stats-head">
+        <h2 class="title">
+         Statistics
+        </h2>
+        <div class="tabs">
+         <button class="active" data-chart="week">
+          Weekly
+         </button>
+         <button data-chart="month">
+          Monthly
+         </button>
+        </div>
+       </div>
+       <article class="chartbox">
+        <small>
+         Spending
+        </small>
+        <h2 id="spent">
+         ₹7,432.20
+        </h2>
+        <div class="bars" id="bars">
+        </div>
+        <div class="money">
+         <div>
+          Income
+          <b>
+           ₹9,898.00
+          </b>
+         </div>
+         <div>
+          Expenses
+          <b>
+           ₹4,204.00
+          </b>
+         </div>
+        </div>
+       </article>
+      </div>
+     </div>
+    </section>
+    <section class="page" id="wallet">
+     <h2 class="title">
+      Your wallet
+     </h2>
+     <div class="cards">
+      <article class="bank blue">
+       <small>
+        VISA PLATINUM
+       </small>
+       <b>
+        ₹28,540
+       </b>
+       <footer>
+        <span>
+         •••• 4890
+        </span>
+        <span>
+         09/29
+        </span>
+       </footer>
+      </article>
+      <article class="bank">
+       <small>
+        VISA
+       </small>
+       <b>
+        ₹4,342
+       </b>
+       <footer>
+        <span>
+         •••• 1345
+        </span>
+        <span>
+         01/28
+        </span>
+       </footer>
+      </article>
+     </div>
+     <article class="panel" style="margin-top:22px">
+      <h2 class="title">
+       Cards are safe here
+      </h2>
+      <p>
+       Freeze, rename, or manage cards from your V Vault.
+      </p>
+      <button class="toggle" id="freeze">
+       Freeze card
+      </button>
+     </article>
+    </section>
+    <section class="page" id="transfer">
+     <h2 class="title">
+      Send money
+     </h2>
+     <article class="panel">
+      <div class="filters">
+       <input id="recipient" placeholder="Recipient name"/>
+       <input id="sendamount" placeholder="Amount in ₹" type="number"/>
+      </div>
+      <button class="toggle on" id="sendnow">
+       Send money
+      </button>
+      <p id="transfernote" style="color:var(--muted);font-size:10px">
+      </p>
+     </article>
+     <h2 class="title" style="margin-top:20px">
+      All transactions
+     </h2>
+     <div class="rows" id="allrows">
+     </div>
+    </section>
+    <section class="page" id="goals">
+     <h2 class="title">
+      Savings goals
+     </h2>
+     <article class="panel">
+      <div class="goal">
+       <div class="goal-top">
+        <span>
+         MacBook Air
+        </span>
+        <small>
+         ₹86,000 / ₹120,000 · 72%
+        </small>
+       </div>
+       <div class="progress">
+        <i style="width:72%">
+        </i>
+       </div>
+      </div>
+      <div class="goal">
+       <div class="goal-top">
+        <span>
+         Trip to Japan
+        </span>
+        <small>
+         ₹54,000 / ₹120,000 · 45%
+        </small>
+       </div>
+       <div class="progress">
+        <i style="width:45%">
+        </i>
+       </div>
+      </div>
+      <button class="toggle" id="addgoal">
+       + Add ₹1,000 to Japan goal
+      </button>
+     </article>
+    </section>
+    <section class="page" id="budget">
+     <h2 class="title">
+      Monthly budget
+     </h2>
+     <div class="budget" id="budgetcards">
+     </div>
+    </section>
+    <section class="page" id="settings">
+     <h2 class="title">
+      Settings
+     </h2>
+     <article class="panel">
+      <div class="goal-top">
+       <span>
+        Dark theme
+       </span>
+       <button class="toggle" id="dark">
+        Off
+       </button>
+      </div>
+      <hr style="border:0;border-top:1px solid var(--line);margin:16px 0"/>
+      <div class="goal-top">
+       <span>
+        Your name
+       </span>
+       <button class="toggle" id="rename">
+        Change
+       </button>
+      </div>
+     </article>
+    </section>
+   </main>
+  </div>
+  <div class="toast" id="toast">
+  </div>
+  <script>
+   const tx=[['Airbnb','Travel','Yesterday','−₹956.50','♧'],['Apple Store','Shopping','Today','−₹1,250','◌'],['Salary','Income','Today','+₹42,000','✦'],['Starbucks','Food','Monday','−₹280','☕']];let amount=28540,japan=45;const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);function toast(t){let x=$('#toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),1800)}function renderBars(mode='week'){let d=mode==='week'?[[22,65],[48,38],[18,53],[24,51],[69,84],[43,70],[72,89]]:[[35,70],[65,42],[54,82],[76,55],[48,76],[85,62],[58,92]];$('#bars').innerHTML=d.map((x,i)=>`<span class="day"><i style="height:${x[0]}%"></i><i style="height:${x[1]}%"></i><small>${mode==='week'?['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i]:['Jan','Feb','Mar','Apr','May','Jun','Jul'][i]}</small></span>`).join('');$('#spent').textContent=mode==='week'?'₹7,432.20':'₹13,460.00'}function renderRows(){let q=$('#search').value.toLowerCase(),a=tx.filter(x=>x[0].toLowerCase().includes(q));let html=a.map(x=>`<div class="trans"><i>${x[4]}</i><div><b>${x[0]}</b><small>${x[2]} · ${x[1]}</small></div><strong class="${x[3][0]==='+'?'pos':''}">${x[3]}</strong></div>`).join('');$('#recent').innerHTML=html;$('#allrows').innerHTML=a.map(x=>`<div class="row"><span><b>${x[4]} ${x[0]}</b></span><span class="tag">${x[1]}</span><span>${x[2]}</span><span class="${x[3][0]==='+'?'pos':''}">${x[3]}</span></div>`).join('')}function updateBalance(){ $('#balance').textContent='₹'+amount.toLocaleString('en-IN')+'.00'}$$('.nav').forEach(n=>n.onclick=()=>{$$('.nav').forEach(x=>x.classList.remove('active'));n.classList.add('active');$$('.page').forEach(p=>p.classList.toggle('active',p.id===n.dataset.page))});$$('[data-action]').forEach(b=>b.onclick=()=>{let act=b.dataset.action;if(act==='topup'){amount+=1000;updateBalance();toast('₹1,000 added to your vault.')}else if(act==='send'){amount-=500;updateBalance();toast('₹500 sent safely.')}else toast(act==='request'?'Request link copied.':'Bill split with friends.')});$$('[data-person]').forEach(b=>b.onclick=()=>{let p=b.dataset.person==='new'?prompt('Who would you like to add?'):b.dataset.person;if(p)toast('Ready to send money to '+p+'.')});$$('[data-chart]').forEach(b=>b.onclick=()=>{$$('[data-chart]').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderBars(b.dataset.chart)});$('#search').oninput=renderRows;$('#sendnow').onclick=()=>{let who=$('#recipient').value||'your recipient',sum=Number($('#sendamount').value);if(!sum||sum<=0)return toast('Enter an amount first.');if(sum>amount)return toast('Not enough balance.');amount-=sum;updateBalance();tx.unshift([who,'Transfer','Just now','−₹'+sum.toLocaleString('en-IN'),'↗']);renderRows();$('#transfernote').textContent='Sent ₹'+sum.toLocaleString('en-IN')+' to '+who+'.';toast('Transfer complete!')};$('#addgoal').onclick=()=>{japan=Math.min(100,japan+1);document.querySelectorAll('.progress i')[1].style.width=japan+'%';document.querySelectorAll('.goal small')[1].textContent='₹'+(japan*1200).toLocaleString('en-IN')+' / ₹120,000 · '+japan+'%';toast('₹1,000 added to your Japan goal.')};const budgets=[['Food',5200,68],['Shopping',3400,51],['Entertainment',1860,43],['Bills',3000,76],['Transport',1200,32]];$('#budgetcards').innerHTML=budgets.map(b=>`<article><b>${b[0]}</b><p>₹${b[1].toLocaleString('en-IN')} used</p><input type="range" value="${b[2]}" aria-label="${b[0]} budget"><small>${b[2]}% of monthly budget</small></article>`).join('');$('#dark').onclick=e=>{document.body.classList.toggle('night');e.currentTarget.classList.toggle('on');e.currentTarget.textContent=e.currentTarget.classList.contains('on')?'On':'Off';document.body.style.background=document.body.classList.contains('night')?'#20232c':'#dce5ff';document.querySelector('.shell').style.background=document.body.classList.contains('night')?'#252831':'#fff';document.querySelector('main').style.color=document.body.classList.contains('night')?'#f3f4f7':'#151515';document.querySelectorAll('.panel,.chartbox,.trans,.rows,.money div,.budget article,.bank:not(.blue)').forEach(x=>{x.style.background=document.body.classList.contains('night')?'#343842':''});document.querySelectorAll('.title,.top h1,.goal-top,.row').forEach(x=>x.style.color=document.body.classList.contains('night')?'#f3f4f7':'')};$('#rename').onclick=()=>{let n=prompt('What is your name?',$('#hello').textContent.replace('Hello, ','').replace('!',''));if(n){$('#hello').textContent='Hello, '+n+'!';$('.profile b').textContent=n;toast('Name updated.')}};// Extra interactive settings and live controls
+function applyCurrency(symbol){document.querySelectorAll('#balance,.bank b,.money b,.goal small,.trans strong,.row span:last-child').forEach(el=>{el.textContent=el.textContent.replace(/[?$?]/g,symbol)});toast('Currency changed to '+symbol)}
+$('#settings .panel').insertAdjacentHTML('beforeend','<hr style="border:0;border-top:1px solid #e3e3e5;margin:16px 0"><div class="goal-top"><span>Currency</span><select id="currency"><option value="₹">Indian Rupee (₹)</option><option value="$">US Dollar ($)</option><option value="€">Euro (€)</option></select></div><hr style="border:0;border-top:1px solid #e3e3e5;margin:16px 0"><div class="goal-top"><span>Notifications</span><button class="toggle on" id="notify">On</button></div>');
+$('#currency').onchange=e=>applyCurrency(e.target.value);
+$('#dark').addEventListener('click',()=>{let on=document.body.classList.contains('night'),card=on?'#343842':'#f5f5f6',text=on?'#f4f5f7':'#151515';document.querySelector('.side').style.background=on?'#586c9b':'#aec1f8';document.querySelectorAll('.balance,.bank.blue').forEach(x=>x.style.background=on?'#657bb9':'');document.querySelectorAll('.panel,.chartbox,.trans,.rows,.money div,.budget article,.bank:not(.blue),.transfer').forEach(x=>x.style.background=card);document.querySelectorAll('h1,h2,b,strong,.goal-top,.row').forEach(x=>x.style.color=text)});
+$('#notify').onclick=e=>{e.currentTarget.classList.toggle('on');e.currentTarget.textContent=e.currentTarget.classList.contains('on')?'On':'Off';toast('Notifications '+e.currentTarget.textContent.toLowerCase()+'.')};
+$$('#budgetcards input').forEach(input=>input.oninput=e=>{let card=e.currentTarget.closest('article');card.querySelector('small').textContent=e.currentTarget.value+'% of monthly budget';card.querySelector('p').textContent='Budget use: '+e.currentTarget.value+'%';toast('Budget updated to '+e.currentTarget.value+'%.')});
+$('#addgoal').insertAdjacentHTML('afterend',' <button class="toggle" id="newgoal">+ Create a new goal</button>');
+$('#newgoal').onclick=()=>{let name=prompt('Name your savings goal:');let target=prompt('Target amount in ?:','50000');if(!name||!target)return;let box=document.querySelector('#goals .panel');let item=document.createElement('div');item.className='goal';item.innerHTML='<div class="goal-top"><span>'+name+'</span><small>?0 / ?'+Number(target).toLocaleString('en-IN')+' ? 0%</small></div><div class="progress"><i style="width:0%"></i></div><button class="toggle">Add ?1,000</button>';box.insertBefore(item,$('#addgoal'));item.querySelector('button').onclick=()=>{let bar=item.querySelector('.progress i'),now=Math.min(100,Number.parseInt(bar.style.width)||0+2);bar.style.width=Math.min(100,(Number.parseInt(bar.style.width)||0)+2)+'%';item.querySelector('small').textContent='Growing your goal ? '+bar.style.width;toast('?1,000 added to '+name+'.')};toast(name+' goal created!')};
+$('#search').oninput=()=>{renderRows();let count=document.querySelectorAll('#recent .trans').length;toast(count?count+' matching transaction'+(count>1?'s':''):'No matches found')};
+$marker
+  </script>
+  <style id="settings-polish">
+   #settings .panel{max-width:700px;padding:0;overflow:hidden}#settings .goal-top{padding:20px 22px;margin:0;align-items:center}#settings hr{margin:0!important;border-color:#e3e3e5!important}#settings select,#nameInput{border:1px solid #d7d7da;border-radius:9px;background:#fff;padding:9px 11px;font:600 11px 'DM Sans';color:#151515;outline:none}#settings select:focus,#nameInput:focus{border-color:#7899e6;box-shadow:0 0 0 3px #aec1f855}.setting-action{border:0;border-radius:9px;background:#111;color:#fff;padding:9px 12px;font:600 10px 'DM Sans';cursor:pointer}.setting-action.light{background:#ececef;color:#202024;margin-left:6px}
+  </style>
+  <script>
+   (function(){
+  const rename=$('#rename');
+  rename.onclick=()=>{
+    const row=rename.closest('.goal-top');
+    const current=$('#hello').textContent.replace('Hello, ','').replace('!','');
+    row.innerHTML='<span><b>Display name</b><small style="display:block;color:#747477;font-weight:400;margin-top:3px">What V Vault calls you</small></span><span><input id="nameInput" value="'+current.replace(/"/g,'&quot;')+'" aria-label="Your name"><button class="setting-action" id="saveName">Save</button><button class="setting-action light" id="cancelName">Cancel</button></span>';
+    $('#nameInput').focus();
+    const save=()=>{const value=$('#nameInput').value.trim();if(!value)return;$('#hello').textContent='Hello, '+value+'!';$('.profile b').textContent=value;row.innerHTML='<span>Your name</span><button class="toggle" id="rename">Change</button>';toast('Your name has been updated.');$('#rename').onclick=()=>rename.click()};
+    $('#saveName').onclick=save;$('#nameInput').onkeydown=e=>{if(e.key==='Enter')save()};$('#cancelName').onclick=()=>location.reload();
+  };
+  const currency=$('#currency');
+  currency.value=localStorage.getItem('vaultCurrency')||'₹';
+  currency.onchange=e=>{const s=e.target.value;const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>{n.nodeValue=n.nodeValue.replace(/[₹$€]/g,s)});localStorage.setItem('vaultCurrency',s);toast('Currency updated to '+e.target.options[e.target.selectedIndex].text+'.')};
+})();
+  </script>
+ </body>
+</html>

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cute Café — Sip Something Sweet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Quicksand:wght@400;500;600;700&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3E8;
+    --cream-2:#F5EADA;
+    --matcha:#A9C39A;
+    --matcha-dark:#7FA06D;
+    --brown:#6B4A34;
+    --brown-deep:#4A3223;
+    --pink:#F3C9C6;
+    --ink:#3E332B;
+    --line:#E7DDCC;
+    --max:1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Quicksand',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  section{padding:90px 0;}
+  h1,h2,h3{font-family:'Baloo 2',cursive; color:var(--brown-deep);}
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--matcha-dark);
+    font-weight:700;
+    margin-bottom:8px;
+    display:inline-block;
+  }
+  .btn{
+    display:inline-block;
+    font-family:'Baloo 2',cursive;
+    font-weight:600;
+    font-size:15px;
+    padding:13px 28px;
+    border-radius:30px;
+    cursor:pointer;
+    border:none;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{ background:var(--matcha-dark); color:#fff; box-shadow:0 8px 20px rgba(127,160,109,0.35);}
+  .btn-outline{ background:transparent; color:var(--brown-deep); border:2px solid var(--brown-deep); }
+  .btn-outline:hover{ background:var(--brown-deep); color:var(--cream);}
+
+  .logo img{
+    width:75px;
+    height:auto;
+    object-fit:contain;
+}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(251,243,232,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:78px;
+  }
+  .logo{
+    font-family:'Yellowtail',cursive;
+    font-size:36px;
+    color:var(--matcha-dark);
+    position:relative;
+  }
+  .logo .heart-dot{ font-size:13px; position:absolute; top:-2px; }
+  .nav-links{ display:flex; gap:34px; font-weight:600; font-size:15px; }
+  .nav-links a{ position:relative; padding:6px 0; }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; height:2px; width:0;
+    background:var(--matcha-dark); transition:width .2s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-right{ display:flex; align-items:center; gap:18px; }
+  .burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; }
+  .burger span{ width:26px; height:3px; background:var(--brown-deep); border-radius:3px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:80px 0 60px;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:flex; align-items:center; gap:50px;
+  }
+  .hero-text{ flex:1 1 480px; }
+  .hero-text h1{
+    font-size:56px; line-height:1.05; margin-bottom:18px;
+  }
+  .hero-text h1 span{ color:var(--matcha-dark); font-family:'Yellowtail',cursive; font-size:1.15em; }
+  .hero-text p{ font-size:17px; color:#7a6d5f; max-width:440px; margin-bottom:30px; }
+  .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; }
+  .hero-visual{
+    flex:1 1 420px;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .hero-img{
+    width:250px;
+    height:250px;
+    object-fit:contain;
+    border-radius:60%;
+    animation:float 4s ease-in-out infinite;
+    z-index:2;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+    100%{
+        transform:translateY(0);
+    }
+}
+  .cup-badge{
+    width:340px; height:340px; max-width:100%;
+    background:var(--matcha);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:150px;
+    position:relative;
+    box-shadow:0 30px 60px rgba(127,160,109,0.35);
+  }
+  .float-chip{
+    position:absolute;
+    background:#fff;
+    border-radius:16px;
+    padding:10px 16px;
+    font-size:13px;
+    font-weight:700;
+    box-shadow:0 10px 24px rgba(0,0,0,0.1);
+    display:flex; align-items:center; gap:8px;
+  }
+  .chip-1{ top:6%; left:-4%; color:var(--brown-deep); }
+  .chip-2{ bottom:8%; right:-6%; color:var(--matcha-dark); }
+  .sparkle{ position:absolute; font-size:22px; color:var(--pink); }
+  .s1{ top:0%; right:18%; } .s2{ bottom:2%; left:14%; } .s3{ top:45%; left:-2%; font-size:16px; }
+
+  /* ---------- MARQUEE STRIP ---------- */
+  .strip{
+    background:var(--brown-deep);
+    color:var(--cream);
+    padding:14px 0;
+    overflow:hidden;
+    white-space:nowrap;
+    margin-top:120px;
+  }
+  .strip{
+    background:var(--brown-deep);
+    color:var(--cream);
+    padding:14px 0;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.strip{
+    background:var(--brown-deep);
+    color:var(--cream);
+    padding:14px 0;
+    overflow:hidden;
+}
+
+.strip-inner{
+    display:flex;
+    width:max-content;
+    animation:scroll 20s linear infinite;
+}
+
+.strip-content{
+    display:flex;
+    gap:40px;
+    padding-right:40px;
+    flex-shrink:0;
+}
+
+.strip-content span{
+    font-family:'Baloo 2',cursive;
+    font-size:15px;
+    opacity:0.9;
+}
+
+
+@keyframes scroll{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-30%);
+    }
+}
+
+  /* ---------- SECTION HEAD ---------- */
+  .sec-head{ text-align:center; max-width:560px; margin:0 auto 50px; }
+  .sec-head h2{ font-size:38px; margin-bottom:10px; }
+  .sec-head p{ color:#7a6d5f; font-size:15.5px; }
+
+  /* ---------- MENU TABS ---------- */
+  .menu-section{ background:var(--cream-2); }
+  .tabs{
+    display:flex; justify-content:center; gap:12px; margin-bottom:44px; flex-wrap:wrap;
+  }
+  .tab{
+    font-family:'Baloo 2',cursive; font-weight:600; font-size:14px;
+    padding:9px 22px; border-radius:22px; cursor:pointer;
+    background:#fff; border:1px solid var(--line); color:var(--brown);
+    transition:all .2s ease;
+  }
+  .tab.active{ background:var(--matcha-dark); color:#fff; border-color:var(--matcha-dark); }
+  .menu-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+  }
+  .menu-panel{ display:none; }
+  .menu-panel.active{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  .menu-card{
+    background:#fff;
+    border-radius:22px;
+    padding:18px 16px 24px;
+    text-align:center;
+    border:1px solid var(--line);
+    box-shadow:0 8px 20px rgba(107,74,52,0.08);
+    transition:all .3s ease;
+    overflow:hidden;
+}
+
+.menu-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(107,74,52,0.15);
+}
+
+.menu-thumb{
+    width:100%;
+    height:170px;
+    border-radius:18px;
+    background:#FBF3E8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:18px;
+    overflow:hidden;
+}
+
+.menu-thumb img{
+    width:140px;
+    height:140px;
+    object-fit:contain;
+    transition:0.3s ease;
+}
+
+.menu-card:hover .menu-thumb img{
+    transform:scale(1.08);
+}
+
+.menu-card h3{
+    font-size:18px;
+    margin-bottom:6px;
+}
+
+.menu-card .desc{
+    font-size:13px;
+    color:#9a8c7c;
+    min-height:38px;
+}
+
+.menu-price{
+    margin-top:10px;
+    font-size:18px;
+    color:var(--matcha-dark);
+}
+
+  /* ---------- ABOUT ---------- */
+  .about .wrap{ display:flex; align-items:center; gap:60px; }
+  .about-visual{
+    flex:1 1 420px;
+    position:relative;
+}
+
+.about-photo{
+    width:100%;
+    aspect-ratio:4/3.2;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 20px 40px rgba(107,74,52,0.15);
+    background:var(--cream);
+}
+
+.about-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .4s ease;
+}
+
+.about-photo:hover img{
+    transform:scale(1.05);
+}
+  .about-text{ flex:1 1 460px; }
+  .about-text h2{ font-size:36px; margin-bottom:16px; }
+  .about-text p{ color:#7a6d5f; margin-bottom:16px; font-size:15.5px; }
+  .stat-row{ display:flex; gap:36px; margin-top:26px; flex-wrap:wrap; }
+  .stat b{ font-family:'Baloo 2',cursive; font-size:26px; color:var(--brown-deep); display:block; }
+  .stat span{ font-size:12.5px; color:#9a8c7c; }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{ background:var(--brown-deep); color:var(--cream); }
+  .testimonials .sec-head h2, .testimonials .sec-head p{ color:var(--cream); }
+  .testimonials .sec-head p{ opacity:0.75; }
+  .t-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .t-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:18px; padding:26px;
+  }
+  .t-card .stars{ color:var(--pink); margin-bottom:12px; font-size:14px; }
+  .t-card p{ font-size:14.5px; opacity:0.9; margin-bottom:16px; }
+  .t-who{ display:flex; align-items:center; gap:10px; }
+  .t-avatar{ width:36px; height:36px; border-radius:50%; background:var(--matcha); display:flex; align-items:center; justify-content:center; font-size:16px; }
+  .t-name{ font-family:'Baloo 2',cursive; font-size:14px; }
+  .t-role{ font-size:11px; opacity:0.6; }
+
+  /* ---------- VISIT ---------- */
+  .visit .wrap{ display:flex; gap:50px; align-items:stretch; flex-wrap:wrap; }
+  .visit-info{ flex:1 1 360px; }
+  .visit-info h2{ font-size:34px; margin-bottom:18px; }
+  .info-row{ display:flex; gap:14px; margin-bottom:20px; align-items:flex-start; }
+  .info-icon{
+    width:42px; height:42px; border-radius:12px; background:var(--matcha);
+    display:flex; align-items:center; justify-content:center; font-size:19px; flex-shrink:0;
+  }
+  .info-row h4{ font-family:'Baloo 2',cursive; font-size:15px; margin-bottom:2px; color:var(--brown-deep); }
+  .info-row p{ font-size:13.5px; color:#7a6d5f; }
+  .map-card{
+    flex:1 1 360px;
+    min-height:320px;
+    border-radius:24px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 18px 40px rgba(107,74,52,0.18);
+}
+
+.map-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .4s ease;
+}
+
+.map-card:hover img{
+    transform:scale(1.05);
+}
+
+  /* ---------- NEWSLETTER ---------- */
+  .newsletter{ background:var(--matcha); }
+  .newsletter .wrap{
+    display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;
+  }
+  .newsletter h2{ font-size:28px; max-width:420px; }
+  .nl-form{ display:flex; gap:10px; flex-wrap:wrap; }
+  .nl-form input{
+    padding:13px 18px; border-radius:26px; border:none; font-family:'Quicksand';
+    font-size:14px; min-width:240px; outline:none;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--brown-deep); color:var(--cream); padding:60px 0 26px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px; margin-bottom:40px; }
+  .foot-logo{ font-family:'Yellowtail',cursive; font-size:34px; color:var(--matcha); margin-bottom:10px; }
+  .foot-grid p{ font-size:13px; opacity:0.7; max-width:260px; }
+  .foot-grid h5{ font-family:'Baloo 2',cursive; font-size:14px; margin-bottom:14px; color:var(--matcha); }
+  .foot-grid ul li{ font-size:13px; opacity:0.75; margin-bottom:9px; }
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,0.12); padding-top:20px;
+    display:flex; justify-content:space-between; font-size:12px; opacity:0.6; flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1024px){
+    .menu-grid, .menu-panel.active{ grid-template-columns:repeat(2,1fr); }
+    .t-grid{ grid-template-columns:repeat(1,1fr); }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .hero-text h1{ font-size:44px; }
+  }
+  @media (max-width:800px){
+    .nav-links{
+      position:fixed; top:78px; left:0; right:0; background:var(--cream);
+      flex-direction:column; padding:20px 32px; gap:0;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-130%); transition:transform .25s ease; opacity:0;
+    }
+    .nav-links.open{ transform:translateY(0); opacity:1; }
+    .nav-links a{ padding:14px 0; border-bottom:1px solid var(--line); }
+    .burger{ display:flex; }
+    .nav-right .btn-primary{ display:none; }
+    .hero .wrap{ flex-direction:column; text-align:center; }
+    .hero-text p{ margin-left:auto; margin-right:auto; }
+    .hero-actions{ justify-content:center; }
+    .about .wrap{ flex-direction:column; }
+    section{ padding:64px 0; }
+  }
+  @media (max-width:560px){
+    .hero-text h1{ font-size:34px; }
+    .cup-badge{ width:240px; height:240px; font-size:100px; }
+    .menu-grid, .menu-panel.active{ grid-template-columns:1fr; }
+    .foot-grid{ grid-template-columns:1fr; }
+    .sec-head h2{ font-size:28px; }
+    .visit-info h2{ font-size:26px; }
+    nav.wrap{ padding:0 20px; }
+    .wrap{ padding:0 20px; }
+    .newsletter .wrap{ flex-direction:column; align-items:flex-start; }
+  }
+
+  .back-btn{
+    position:fixed;
+    top:22px;
+    left:22px;
+    width:50px;
+    height:50px;
+    background:#fff;
+    color:var(--brown-deep);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 12px 30px rgba(0,0,0,.15);
+    transition:.3s;
+    z-index:9999;
+}
+
+.back-btn:hover{
+    background:var(--matcha-dark);
+    color:white;
+    transform:translateX(-4px);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#home" class="logo">
+    <img src="cute.png" alt="Cute Café Logo">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit Us</a></li>
+    </ul>
+
+    <a href="uiuxproject.html" class="back-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+         fill="none" viewBox="0 0 24 24"
+         stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15 18l-6-6 6-6"/>
+    </svg>
+    </a>
+    <div class="nav-right">
+      <a href="#visit" class="btn btn-primary">Order Now</a>
+      <button class="burger" id="burgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="eyebrow">✦ Cozy corner, big flavor ✦</span>
+      <h1>Sip something <span>sweet</span> today</h1>
+      <p>Cute Café is your neighborhood spot for matcha, mochi, and everything soft & sugary. Handmade daily, served with a heart on top.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-primary">See the Menu</a>
+        <a href="#visit" class="btn btn-outline">Find Us</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+
+  <div class="cup-badge">
+
+    <img src="cute.png" alt="Cute Cafe Drink" class="hero-img">
+
+    <div class="float-chip chip-1">🍰 Fresh daily</div>
+    <div class="float-chip chip-2">☕ Since 2026</div>
+
+    <span class="sparkle s1">✦</span>
+    <span class="sparkle s2">✧</span>
+    <span class="sparkle s3">✦</span>
+
+  </div>
+
+</div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-inner">
+
+    <div class="strip-content">
+      <span>✦ Matcha Latte</span>
+      <span>✦ Mochi Donuts</span>
+      <span>✦ Cold Brew</span>
+      <span>✦ Strawberry Tart</span>
+      <span>✦ Milk Tea</span>
+      <span>✦ Matcha Latte</span>
+      <span>✦ Mochi Donuts</span>
+      <span>✦ Cold Brew</span>
+      <span>✦ Strawberry Tart</span>
+      <span>✦ Milk Tea</span>
+      <span>✦ Matcha Latte</span>
+      <span>✦ Mochi Donuts</span>
+      <span>✦ Cold Brew</span>
+      <span>✦ Strawberry Tart</span>
+      <span>✦ Milk Tea</span>
+      <span>✦ Matcha Latte</span>
+      <span>✦ Mochi Donuts</span>
+      <span>✦ Cold Brew</span>
+      <span>✦ Strawberry Tart</span>
+      <span>✦ Milk Tea</span>
+    </div>
+
+  </div>
+</div>
+
+<section class="menu-section" id="menu">
+  <div class="wrap">
+
+    <div class="sec-head">
+      <span class="eyebrow">Our Menu</span>
+      <h2>Little treats, big love</h2>
+      <p>From matcha to mochi — every item is made fresh in-house each morning.</p>
+    </div>
+
+
+    <div class="tabs">
+      <div class="tab active" data-tab="coffee">Coffee</div>
+      <div class="tab" data-tab="pastries">Pastries</div>
+      <div class="tab" data-tab="cakes">Cakes</div>
+    </div>
+
+
+    <!-- COFFEE -->
+    <div class="menu-panel active" id="coffee">
+
+      <div class="menu-card">
+        <div class="menu-thumb">
+          <img src="matcha.png" alt="Matcha Latte">
+        </div>
+        <h3>Matcha Latte</h3>
+        <p class="desc">Ceremonial matcha, steamed milk</p>
+        <div class="menu-price">$4.80</div>
+      </div>
+
+
+      <div class="menu-card">
+        <div class="menu-thumb">
+          <img src="cappuccino.png" alt="Vanilla Cappuccino">
+        </div>
+        <h3>Vanilla Cappuccino</h3>
+        <p class="desc">Espresso, foam, vanilla bean</p>
+        <div class="menu-price">$4.20</div>
+      </div>
+
+
+      <div class="menu-card">
+        <div class="menu-thumb">
+          <img src="cocoa.png" alt="Hot Cocoa">
+        </div>
+        <h3>Hot Cocoa</h3>
+        <p class="desc">Belgian cocoa, marshmallows</p>
+        <div class="menu-price">$3.90</div>
+      </div>
+
+
+      <div class="menu-card">
+        <div class="menu-thumb">
+          <img src="macchiato.png" alt="Caramel Macchiato">
+        </div>
+        <h3>Caramel Macchiato</h3>
+        <p class="desc">Espresso, caramel drizzle</p>
+        <div class="menu-price">$4.60</div>
+      </div>
+
+    </div>
+
+
+
+    <!-- PASTRIES -->
+    <div class="menu-panel" id="pastries">
+
+      <div class="menu-card">
+        <div class="menu-thumb">
+          <img src="mochi.png" alt="Mochi Donut">
+        </div>
+        <h3>Matcha Mochi</h3>
+        <p class="desc">Chewy, pastelly matcha mochi</p>
+        <div class="menu-price">$3.50</div>
+      </div>
+
+
+      <div class="menu-card">
+        <div class="menu-thumb">
+          <img src="tart.png" alt="Strawberry Tart">
+        </div>
+        <h3>Golden Tart</h3>
+        <p class="desc">Golden crust, fresh cream</p>
+        <div class="menu-price">$5.20</div>
+      </div>
+
+
+      <div class="menu-card">
+        <div class="menu-thumb">
+          <img src="creamy.png" alt="Cream Puff">
+        </div>
+        <h3>Cream pastry</h3>
+        <p class="desc">Choux pastry, milk filling</p>
+        <div class="menu-price">$3.90</div>
+      </div>
+
+
+      <div class="menu-card">
+        <div class="menu-thumb">
+          <img src="cro.png" alt="Butter Croissant">
+        </div>
+        <h3>Matcha Croissant</h3>
+        <p class="desc">Flaky, laminated, matcha</p>
+        <div class="menu-price">$4.10</div>
+      </div>
+
+    </div>
+
+
+
+    <!-- CAKES -->
+<div class="menu-panel" id="cakes">
+
+  <div class="menu-card">
+    <div class="menu-thumb">
+      <img src="milkcake.png" alt="Strawberry Cake">
+    </div>
+    <h3>Milk Cake</h3>
+    <p class="desc">Soft vanilla sponge with fresh milk.</p>
+    <div class="menu-price">$6.50</div>
+  </div>
+
+  <div class="menu-card">
+    <div class="menu-thumb">
+      <img src="choco.png" alt="Chocolate Cake">
+    </div>
+    <h3>Chocolate Cake</h3>
+    <p class="desc">Rich chocolate sponge with silky ganache.</p>
+    <div class="menu-price">$6.80</div>
+  </div>
+
+  <div class="menu-card">
+    <div class="menu-thumb">
+      <img src="red.png" alt="Red Velvet Cake">
+    </div>
+    <h3>Red Velvet</h3>
+    <p class="desc">Cream cheese frosting with a moist red sponge.</p>
+    <div class="menu-price">$7.20</div>
+  </div>
+
+  <div class="menu-card">
+    <div class="menu-thumb">
+      <img src="mcake.png" alt="Matcha Cake">
+    </div>
+    <h3>Matcha Cake</h3>
+    <p class="desc">Fluffy matcha sponge layered with whipped cream.</p>
+    <div class="menu-price">$6.90</div>
+  </div>
+
+</div>
+
+
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-visual">
+    <div class="about-photo">
+        <img src="cafe.png" alt="Cute Café Interior">
+    </div>
+</div>
+    <div class="about-text">
+      <span class="eyebrow">Our Story</span>
+      <h2>Made with matcha, mochi & a whole lot of heart</h2>
+      <p>Cute started as a tiny weekend stall with one matcha machine and a big dream. Today we're a cozy corner café where regulars come for their morning latte and stay for the pastel pastries.</p>
+      <p>Every recipe is made in small batches, every cup poured with a little extra care — because a good café should feel like a hug.</p>
+      <div class="stat-row">
+        <div class="stat"><b>4.9★</b><span>Customer rating</span></div>
+        <div class="stat"><b>40+</b><span>Menu items</span></div>
+        <div class="stat"><b>3</b><span>Cozy locations</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Reviews</span>
+      <h2>What our regulars say</h2>
+      <p>Real notes from real dessert lovers.</p>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>"The matcha latte here ruined every other café for me. So creamy, and the mochi donuts are unreal."</p>
+        <div class="t-who"><div class="t-avatar">🐻</div><div><div class="t-name">Aria N.</div><div class="t-role">Regular since 2022</div></div></div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>"Cutest café interior in the city, and the staff remember your order. It feels like home."</p>
+        <div class="t-who"><div class="t-avatar">🐰</div><div><div class="t-name">Devan K.</div><div class="t-role">Weekend regular</div></div></div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>"Strawberry tart is the best in town, hands down. Worth the small wait on weekends."</p>
+        <div class="t-who"><div class="t-avatar">🐱</div><div><div class="t-name">Priya S.</div><div class="t-role">First-time visitor</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="visit-info">
+      <span class="eyebrow">Visit Us</span>
+      <h2>Come say hi in person</h2>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div><h4>Location</h4><p>12 abc, Una, Gujarat, India</p></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🕒</div>
+        <div><h4>Hours</h4><p>Mon–Fri: 8am – 8pm &nbsp;·&nbsp; Sat–Sun: 9am – 9pm</p></div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">☎</div>
+        <div><h4>Contact</h4><p>hello@cutecafe.com &nbsp;·&nbsp; +91 12345 54321</p></div>
+      </div>
+      <a href="#" class="btn btn-primary" style="margin-top:8px;">Get Directions</a>
+    </div>
+    <div class="map-card">
+    <img src="cafefront.png" alt="Cute Café Storefront">
+
+</div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="wrap">
+    <h2>Get 10% off your first order — straight to your inbox 💌</h2>
+    <form class="nl-form" onsubmit="event.preventDefault();">
+      <input type="email" placeholder="you@email.com" required>
+      <button class="btn" style="background:var(--brown-deep);color:var(--cream);" type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">
+          <a class="logo">
+            <img src="cute2.png" alt="Cute Café Logo">
+          </a>
+        </div>
+        <p>A cozy corner for matcha, mochi, and everything sweet. Made fresh daily, served with a heart on top.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul><li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#about">Our Story</a></li><li><a href="#reviews">Reviews</a></li></ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul><li>Careers</li><li>Franchise</li><li>Gift Cards</li><li>Press</li></ul>
+      </div>
+      <div>
+        <h5>Follow</h5>
+        <ul><li>Instagram</li><li>TikTok</li><li>Pinterest</li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Cute Café. All rights reserved.</span>
+      <span>Made with ♥ and matcha</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.menu-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
